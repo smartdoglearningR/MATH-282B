@@ -1,13 +1,4 @@
-require(MASS)
-require(car)
-require(ellipse)
-#problem 1#
-#Compare length of confidence intervals using Bonferroni Correction and Scheffe's method
-#formula of the width of CI's contains a multiplication of the Standard error of the parameter
-#which will be cancelled by division.
-alpha=0.05
-for(p in c(2,5,20,100)){
-  for(n in c(5*p,10*p,20*p)){
+
     Width_CI_Bonferroni = 2*qt(1-(alpha/p)/2,n-p-1)#Bonferroni Correction: alpha->alpha/p
     Width_CI_Scheffe = 2*sqrt((p+1)*qf(1-alpha,p+1,n-p-1))
     Ratio=Width_CI_Bonferroni/Width_CI_Scheffe
